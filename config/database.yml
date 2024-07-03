@@ -12,28 +12,28 @@
 # Configure Using Gemfile
 # gem "pg"
 #
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  username: postgres
-  password: postgres
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
+#   username: postgres
+#   password: postgres
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   # pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: postgres
-  pool: 5
+  # host: postgres
+  # pool: 5
 
-development:
-  # <<: *default
-  adapter: postgresql
-  encoding: unicode
-  username: postgres
-  password: postgres
+# development:
+#   # <<: *default
+#   adapter: postgresql
+#   encoding: unicode
+#   username: postgres
+#   password: postgres
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   # pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: postgres
-  pool: 5
+  # host: postgres
+  # pool: 5
   # database: rails_7_with_docker_development
 
   # The specified database role being used to connect to PostgreSQL.
@@ -95,3 +95,30 @@ development:
 #   database: rails_7_with_docker_production
 #   username: rails_7_with_docker
 #   password: <%= ENV["RAILS_7_WITH_DOCKER_DATABASE_PASSWORD"] %>
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: postgres
+  pool: 5
+  host: db
+
+development:
+  <<: *default
+  database: myapp_development
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: postgres
+  pool: 5
+  host: db
+
+
+test:
+  <<: *default
+  database: myapp_test
+
+production:
+  <<: *default
+  database: myapp_production

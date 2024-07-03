@@ -41,3 +41,16 @@ Docker command
 # Run docler with postgres
  docker run --network rails_postgres --name rails_7 -p 3000:3000 rails_docker:2
  docker exec rails_7 rails db:create
+
+
+ # To create database in docker
+ docker-compose run web rails db:create
+
+
+ #
+ docker-compose run web rails new . --force --database=postgresql --skip-bundle
+
+ # To change the ownership of user in linux
+ sudo chown -R $USER:$USER .
+
+ 
